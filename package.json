@@ -1,0 +1,53 @@
+{
+  "name": "banner",
+  "version": "1.0.0",
+  "main": "index.html",
+  "author": "https://twitter.com/Fortel91",
+  "license": "ISC",
+  "description": "",
+  "scripts": {
+    "vite": "vite",
+    "dev": "npm-run-all --parallel watch:tsc vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "watch:tsc": "tsc --noEmit --watch",
+    "lint": "eslint ./src/**/*.{ts,tsx}",
+    "lint:fix": "eslint ./src/**/*.{ts,tsx} --fix",
+    "docs": "typedoc",
+    "watch:docs": "typedoc --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.15",
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
+    "@vitejs/plugin-legacy": "^5.4.2",
+    "autoprefixer": "^10.4.20",
+    "browser-sync": "^3.0.3",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-tsdoc": "^0.3.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "tailwindcss": "^3.4.13",
+    "typedoc": "^0.26.7",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vite-plugin-browser-sync": "^3.0.4"
+  },
+  "typedocOptions": {
+    "entryPoints": [
+      "src/js/app.ts"
+    ],
+    "out": "docs",
+    "tsconfig": "tsconfig.json",
+    "includeVersion": true,
+    "readme": "README.md"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src" /* Specify the root folder within your source files. */,
+    "paths": {
+      "@": ["./src"]
+    } /* Specify a set of entries that re-map imports to additional lookup locations. */
+  },
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
