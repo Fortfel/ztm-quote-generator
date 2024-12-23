@@ -1,17 +1,7 @@
 import type { Config } from 'tailwindcss'
-const plugin = require('tailwindcss/plugin')
-const defaultTheme = require('tailwindcss/defaultTheme')
-
-const fs = require('fs')
-const util = require('util')
-// const log_file = fs.createWriteStream(__dirname + '/debug.log', { flags: 'w' })
-const log_stdout = process.stdout
-
-// Logs to file and stdout
-console.log = function (d) {
-  // log_file.write(util.format(d) + '\n')
-  log_stdout.write(util.format(d) + '\n')
-}
+import plugin = require('tailwindcss/plugin')
+import defaultTheme = require('tailwindcss/defaultTheme')
+import { consoleLogNode } from './src/_utility'
 
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -35,10 +25,20 @@ export default {
     },
   },
   plugins: [
+    //TODO[fortf] Removing background during autocomplete for inputs etc
+    // https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
+    // https://stackoverflow.com/questions/64148246/tailwindcss-input-field-change-in-react
+    // https://stackoverflow.com/questions/75919757/autofill-input-in-dark-mode-with-tailwind
+    // https://github.com/tailwindlabs/tailwindcss/discussions/8679     - put same styles in tailwind.css file as in this topic?
+
     require('@tailwindcss/typography'),
     // require('@tailwindcss/forms'),
     // require('@tailwindcss/aspect-ratio'),
     // require('@tailwindcss/container-queries'),
+    // https://github.com/jamiebuilds/tailwindcss-animate/tree/main
+    /**
+     * Adds bg-stripes functionality
+     */
     plugin(function ({ addUtilities, matchUtilities, theme }) {
       const utilities = {}
       const themeColors = theme('colors')
