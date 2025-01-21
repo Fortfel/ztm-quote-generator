@@ -11,19 +11,25 @@ type DOMReferences = {
   app: HTMLElement
 }
 
+/**
+ * Options for configuring the application.
+ */
 type Options = {
   attempts: number
 }
 
+/**
+ * Configuration parameters for the application.
+ */
 type Parameters = {
+  /** Optional configuration options for the application. */
   options?: Partial<Options>
 }
 
 class App {
-  //TODO[fortf] use WeakMap or WeakSet here?
   //TODO[fortf] use WeakMap for eventlisteners?
   //TODO[fortf] add compose and pipe to utilities / usage with arr.reduce
-  public domRefs: Readonly<DOMReferences>
+  public readonly domRefs: Readonly<DOMReferences>
   private readonly options: Readonly<Options>
   private readonly defaultOptions = {
     attempts: 5,
@@ -42,12 +48,16 @@ class App {
 
   /**
    * Initializes the DOM references for the application.
+   * @throws Error if the app element is not found.
    * @returns An object containing references to DOM elements.
    */
-  private initDomRefs(): DOMReferences {
-    return {
-      app: document.querySelector('#app') as HTMLElement,
-    }
+  private initDomRefs(): Readonly<DOMReferences> {
+    const app = document.querySelector<HTMLElement>('#app')
+    if (!app) throw new Error('App element not found')
+
+    return Object.freeze({
+      app,
+    })
   }
 
   private initialize(): void {

@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
-import plugin = require('tailwindcss/plugin')
-import defaultTheme = require('tailwindcss/defaultTheme')
+
+const plugin = require('tailwindcss/plugin')
+const defaultTheme = require('tailwindcss/defaultTheme')
 import { consoleLogNode } from './src/_utility'
 
 export default {
@@ -56,15 +57,9 @@ export default {
         let previousNumber = null
         for (const [shade, color] of Object.entries<string>(colorValues)) {
           const [r, g, b, a] = toRgba(color, 50)
-          const [pr, pg, pb, pa] = previousNumber
-            ? toRgba(previousNumber, 10)
-            : [r, g, b, 0.1]
+          const [pr, pg, pb, pa] = previousNumber ? toRgba(previousNumber, 10) : [r, g, b, 0.1]
 
-          addColor(
-            `${name}-${shade}`,
-            rgbaToHex(r, g, b, a),
-            rgbaToHex(pr, pg, pb, pa),
-          )
+          addColor(`${name}-${shade}`, rgbaToHex(r, g, b, a), rgbaToHex(pr, pg, pb, pa))
 
           previousNumber = color
         }
@@ -91,10 +86,7 @@ export default {
 } satisfies Config
 
 // Utility functions
-const toRgba = (
-  hexCode: string,
-  opacity = 50,
-): [number, number, number, number] => {
+const toRgba = (hexCode: string, opacity = 50): [number, number, number, number] => {
   let hex = hexCode.replace('#', '')
 
   if (hex.length === 3) {
