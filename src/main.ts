@@ -1,8 +1,6 @@
 import '@/style/tailwind.css'
 import { tw } from '@/_utility'
 
-//TODO[fortf] README
-
 /**
  * Represents references to DOM elements used in the application.
  */
@@ -27,8 +25,6 @@ type Parameters = {
 }
 
 class App {
-  //TODO[fortf] use WeakMap for eventlisteners?
-  //TODO[fortf] add compose and pipe to utilities / usage with arr.reduce
   public readonly domRefs: Readonly<DOMReferences>
   private readonly options: Readonly<Options>
   private readonly defaultOptions = {
@@ -44,6 +40,10 @@ class App {
     this.domRefs = this.initDomRefs()
 
     this.initialize()
+    const div = document.createElement('div')
+    div.className = 'bg-stripes-fuchsia-300 sm:bg-red-500 font-poppins'
+    div.innerText = 'KEK'
+    this.domRefs.app.appendChild(div)
   }
 
   /**
@@ -60,18 +60,9 @@ class App {
     })
   }
 
-  private initialize(): void {
-    this.setupBodyClass()
-  }
-
-  /**
-   * Sets up the body class.
-   */
-  private setupBodyClass(): void {
-    document.body.classList.add(
-      ...tw`space-between minh-screen m-0 flex justify-center bg-slate-900 text-slate-400 antialiased`.split(' '),
-    )
-  }
+  private initialize(): void {}
 }
+
+var a = '<div class="min-h-screen"></div>'
 
 new App()
