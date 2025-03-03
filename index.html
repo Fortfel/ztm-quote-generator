@@ -11,9 +11,88 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <div id="app"></div>
+    <div
+      id="app"
+      class="mx-3 flex w-auto max-w-5xl flex-col gap-4 rounded-xl bg-white/50 px-5 py-8 text-center shadow-[0_10px_10px_10px_rgba(0,0,0,0.2)]"
+    >
+      <!-- Quote -->
+      <div>
+        <i class="fas fa-quote-left !hidden pr-2 text-4xl lg:text-5xl"></i>
+        <span id="quote" class="text-3xl font-medium lg:text-4xl"></span>
+        <div id="loading" class="flex min-w-56 items-center gap-5 px-4 lg:min-w-xl">
+          <div class="flex flex-col items-center gap-2">
+            <svg
+              class="animate-spin fill-gray-400"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.72,19.9a8,8,0,0,1-6.5-9.79A7.77,7.77,0,0,1,10.4,4.16a8,8,0,0,1,9.49,6.52A1.54,1.54,0,0,0,21.38,12h.13a1.37,1.37,0,0,0,1.38-1.54,11,11,0,1,0-12.7,12.39A1.54,1.54,0,0,0,12,21.34h0A1.47,1.47,0,0,0,10.72,19.9Z"
+              />
+            </svg>
+            <span class="animate-pulse text-gray-700">loading...</span>
+          </div>
+
+          <div class="flex flex-1 animate-pulse space-x-4">
+            <div class="flex-1 space-y-6 py-1">
+              <div class="h-2 rounded bg-gray-200"></div>
+              <div class="space-y-3">
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="col-span-2 h-2 rounded bg-gray-200"></div>
+                  <div class="col-span-1 h-2 rounded bg-gray-200"></div>
+                </div>
+                <div class="h-2 rounded bg-gray-200"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Author -->
+      <div class="text-2xl font-normal italic lg:text-3xl">
+        <span id="author"></span>
+      </div>
+      <!-- Buttons -->
+      <div class="flex items-center justify-between">
+        <a
+          href="#"
+          id="twitter"
+          class="rounded-md bg-neutral-600 px-5 py-2.5 text-xl font-semibold text-white shadow-xs hover:bg-[#38a1f3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600 active:translate-y-1"
+        >
+          <i class="fab fa-twitter"></i>
+        </a>
+        <button
+          type="button"
+          id="new-quote"
+          class="rounded-md bg-neutral-600 px-5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-neutral-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600 active:translate-y-1 disabled:opacity-50 disabled:hover:bg-neutral-600 disabled:active:translate-none"
+        >
+          <span class="flex items-center gap-2">
+            <svg
+              class="hidden animate-spin fill-gray-400"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.72,19.9a8,8,0,0,1-6.5-9.79A7.77,7.77,0,0,1,10.4,4.16a8,8,0,0,1,9.49,6.52A1.54,1.54,0,0,0,21.38,12h.13a1.37,1.37,0,0,0,1.38-1.54,11,11,0,1,0-12.7,12.39A1.54,1.54,0,0,0,12,21.34h0A1.47,1.47,0,0,0,10.72,19.9Z"
+              />
+            </svg>
+            <span>New Quote</span>
+          </span>
+        </button>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts" defer></script>
   </body>
 </html>

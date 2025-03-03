@@ -1,6 +1,10 @@
 # TypeScript Project
 
-This project is built using TypeScript with ESLint for code linting
+If quotes generation is not working, need to go to  
+[https://cors-anywhere.herokuapp.com/corsdemo](https://cors-anywhere.herokuapp.com/corsdemo)  
+first and activate it.
+
+Project is built using TypeScript with ESLint for code linting
 and TypeDoc for generating documentation.
 
 ## Getting Started
