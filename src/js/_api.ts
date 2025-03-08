@@ -1,7 +1,7 @@
 /**
  * Represents a quote from the ZenQuotes API
  */
-export type ApiResponse = Array<{
+export type ApiResponse = ReadonlyArray<{
   /** The quote text */
   q: string
   /** The author of the quote */
@@ -17,12 +17,12 @@ export type ApiResponse = Array<{
 /**
  * Structure for caching quotes with timestamp
  */
-type CacheItem = {
+type CacheItem = Readonly<{
   /** When the cache was created */
   timestamp: number
   /** The cached quote data */
   data: ApiResponse
-}
+}>
 
 /**
  * Client for fetching and managing quotes from ZenQuotes API
@@ -89,10 +89,18 @@ class QuoteClient {
 
     const cacheItem = localStorage.getItem(this.CACHE_NAME)
     if (cacheItem) {
-      totalSize = this.CACHE_NAME.length * 2 + cacheItem.length * 2
+      // Size in bytes of the stored string (approximate)
+      totalSize = new Blob([this.CACHE_NAME]).size + new Blob([cacheItem]).size
+
       try {
         const cacheData = JSON.parse(cacheItem) as CacheItem
-        itemCount = cacheData.data.length
+        // Verify data is an array before accessing length
+        if (Array.isArray(cacheData.data)) {
+          itemCount = cacheData.data.length
+        } else {
+          console.warn('Cache data is not an array')
+          itemCount = 1 // Count as single item if not an array
+        }
       } catch (error) {
         console.error('Error parsing cache data:', error)
       }
@@ -108,10 +116,10 @@ class QuoteClient {
    */
   private saveToCache(key: string, data: ApiResponse): void {
     try {
-      const cacheItem: CacheItem = {
+      const cacheItem = {
         timestamp: Date.now(),
         data,
-      }
+      } as const satisfies CacheItem
       localStorage.setItem(key, JSON.stringify(cacheItem))
     } catch (error) {
       console.error('Error saving to cache:', error)
