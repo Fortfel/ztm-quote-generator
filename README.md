@@ -40,12 +40,8 @@ Make sure you have the following installed:
 
 ```
 ├── src/                    # Source code for the project
-│   ├── assets/             # Static assets
-│   │   ├── gradients/      # Gradient resources
-│   │   └── images/         # Image files
 │   ├── js/                 # JavaScript/TypeScript modules
 │   ├── style/              # CSS styles including Tailwind
-│   │   └── plugins/        # Custom Tailwind plugins
 │   ├── utils/              # Utility functions and types
 │   │   ├── index.ts        # Re-exports all utilities
 │   │   ├── utility.ts      # Utility functions
